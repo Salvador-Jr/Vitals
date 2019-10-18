@@ -187,6 +187,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="BPMstatus" destination="1an-rt-zol" id="lkL-qe-zz8"/>
                         <outlet property="dateField" destination="qEz-I7-4he" id="0u2-Aa-dmO"/>
                     </connections>
                 </viewController>

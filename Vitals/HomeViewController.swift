@@ -11,6 +11,7 @@ import Parse
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var BPMstatus: UILabel!
     @IBOutlet weak var dateField: UILabel!
     override func viewDidLoad() {
         let formatter = DateFormatter()
@@ -29,6 +30,11 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let query = PFQuery(className:"HeartRate")
+        query.includeKey("User")
     }
     
     @IBAction func onLogoutButton(_ sender: Any) {
