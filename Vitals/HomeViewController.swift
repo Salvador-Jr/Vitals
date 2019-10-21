@@ -9,33 +9,76 @@
 import UIKit
 import Parse
 
-class HomeViewController: UIViewController {
-
-    @IBOutlet weak var BPMstatus: UILabel!
-    @IBOutlet weak var dateField: UILabel!
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+   
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    var hrs = [PFObject]()
+    
     override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
+           }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        let query = PFQuery(className: "HeartRate")
+        query.includeKey("user")
+        query.limit = 2
+        query.findObjectsInBackground{(hrs, error) in if hrs != nil {
+            self.hrs = hrs!
+            self.tableView.reloadData()
+            }
+            
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return hrs.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier:"HeartRateTableViewCell") as! HeartRateTableViewCell
+        
+        let hr  = hrs[indexPath.row]
+//        let user  = hr["User"] as! PFUser
+//        let DateCreated = hr["Time"] as? Int
+        let HRdata = hr["HeartRateReading"] as? Int
+        cell.heartRateLabel.text = String(HRdata!)
+//        cell.tableViewDate.text = String (hr.createdAt!)
+        let creAt = hr.createdAt
+        print(creAt!)
+        
+        
         let formatter = DateFormatter()
         // initially set the format based on your datepicker date / server String
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        formatter.dateFormat = "HH:mm:ss"
         
         let myString = formatter.string(from: Date()) // string purpose I add here
+//        print("MS", myString)
+        let myStringDBDateTime = formatter.string(from:creAt!)
+        print("MS:",myStringDBDateTime)
         // convert your string to date
         let yourDate = formatter.date(from: myString)
         //then again set the date format whhich type of output you need
         formatter.dateFormat = "MMM dd, yyyy"
         // again convert your date to string
         let myStringafd = formatter.string(from: yourDate!)
-        dateField.text = myStringafd
         print(myStringafd)
-        super.viewDidLoad()
+        
+        let myStringDBDate = formatter.string(from:creAt!)
+        print(myStringDBDate)
+        cell.tableViewDate.text = String(myStringDBDate)
 
-        // Do any additional setup after loading the view.
+        
+//        super.viewDidLoad()
+        
+        
+        
+        return cell
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        let query = PFQuery(className:"HeartRate")
-        query.includeKey("User")
-    }
+    
     
     @IBAction func onLogoutButton(_ sender: Any) {
         PFUser.logOut()
@@ -56,3 +99,19 @@ class HomeViewController: UIViewController {
     */
 
 }
+
+
+//let formatter = DateFormatter()
+//// initially set the format based on your datepicker date / server String
+//formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+//
+//let myString = formatter.string(from: Date()) // string purpose I add here
+//// convert your string to date
+//let yourDate = formatter.date(from: myString)
+////then again set the date format whhich type of output you need
+//formatter.dateFormat = "MMM dd, yyyy"
+//// again convert your date to string
+//let myStringafd = formatter.string(from: yourDate!)
+//dateField.text = myStringafd
+//print(myStringafd)
+//super.viewDidLoad()
