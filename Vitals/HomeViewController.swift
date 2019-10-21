@@ -25,7 +25,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidAppear(animated)
         let query = PFQuery(className: "HeartRate")
         query.includeKey("user")
-        query.limit = 5
+        query.limit = 7
         query.findObjectsInBackground{(hrs, error) in if hrs != nil {
             self.hrs = hrs!
             self.tableView.reloadData()
@@ -48,17 +48,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.heartRateLabel.text = String(HRdata!)
 //        cell.tableViewDate.text = String (hr.createdAt!)
         let creAt = hr.createdAt
-        print(creAt!)
-        
-        
         let formatter = DateFormatter()
         // initially set the format based on your datepicker date / server String
         formatter.dateFormat = "HH:mm:ss"
         
         let myString = formatter.string(from: Date()) // string purpose I add here
-//        print("MS", myString)
         let myStringDBDateTime = formatter.string(from:creAt!)
-        print("MS:",myStringDBDateTime)
         cell.tableViewTime.text = String(myStringDBDateTime)
 
         // convert your string to date
@@ -70,7 +65,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         print(myStringafd)
         
         let myStringDBDate = formatter.string(from:creAt!)
-        print(myStringDBDate)
         cell.tableViewDate.text = String(myStringDBDate)
 
         
