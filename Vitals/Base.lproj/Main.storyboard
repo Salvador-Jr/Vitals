@@ -158,32 +158,49 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="80.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Heart Rate:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MhN-EI-aVc">
-                                                    <rect key="frame" x="8" y="8" width="87" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Heart Rate:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MhN-EI-aVc">
+                                                    <rect key="frame" x="20" y="47.5" width="87" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dec 30, 2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ede-WE-6hW">
+                                                    <rect key="frame" x="20" y="19" width="278" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="9:30:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VEI-MG-Kwi">
+                                                    <rect key="frame" x="306" y="18.5" width="61" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fJG-mo-AbV">
-                                                    <rect key="frame" x="103" y="8" width="264" height="20.5"/>
+                                                    <rect key="frame" x="115" y="47.5" width="237" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="MhN-EI-aVc" firstAttribute="leading" secondItem="kmB-JJ-4sk" secondAttribute="leading" constant="8" id="0RG-eY-6qc"/>
-                                                <constraint firstAttribute="trailing" secondItem="fJG-mo-AbV" secondAttribute="trailing" constant="8" id="2DG-jZ-IGb"/>
-                                                <constraint firstItem="MhN-EI-aVc" firstAttribute="top" secondItem="kmB-JJ-4sk" secondAttribute="top" constant="8" id="KBT-xP-337"/>
-                                                <constraint firstItem="fJG-mo-AbV" firstAttribute="top" secondItem="kmB-JJ-4sk" secondAttribute="top" constant="8" id="N1h-8G-Y4x"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="MhN-EI-aVc" secondAttribute="bottom" constant="8" id="mBh-qE-Jli"/>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="fJG-mo-AbV" secondAttribute="bottom" constant="8" id="qRF-O2-uRf"/>
-                                                <constraint firstItem="fJG-mo-AbV" firstAttribute="leading" secondItem="MhN-EI-aVc" secondAttribute="trailing" constant="8" id="vGe-YE-Fjk"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="MhN-EI-aVc" secondAttribute="bottom" constant="8" id="0Sx-gB-g1o"/>
+                                                <constraint firstAttribute="trailing" secondItem="VEI-MG-Kwi" secondAttribute="trailing" constant="8" id="0V3-c5-Qy7"/>
+                                                <constraint firstItem="VEI-MG-Kwi" firstAttribute="leading" secondItem="ede-WE-6hW" secondAttribute="trailing" constant="8" id="5PF-h5-7Pn"/>
+                                                <constraint firstItem="fJG-mo-AbV" firstAttribute="top" secondItem="ede-WE-6hW" secondAttribute="bottom" constant="8" id="FmZ-3u-9F9"/>
+                                                <constraint firstItem="fJG-mo-AbV" firstAttribute="top" secondItem="VEI-MG-Kwi" secondAttribute="bottom" constant="8" id="G00-n9-Zdi"/>
+                                                <constraint firstItem="MhN-EI-aVc" firstAttribute="leading" secondItem="kmB-JJ-4sk" secondAttribute="leading" constant="20" id="JEI-us-WvC"/>
+                                                <constraint firstItem="MhN-EI-aVc" firstAttribute="top" secondItem="ede-WE-6hW" secondAttribute="bottom" constant="8" id="a7F-gg-y2H"/>
+                                                <constraint firstItem="ede-WE-6hW" firstAttribute="leading" secondItem="kmB-JJ-4sk" secondAttribute="leadingMargin" constant="5" id="v3Q-h0-zaF"/>
+                                                <constraint firstItem="fJG-mo-AbV" firstAttribute="leading" secondItem="MhN-EI-aVc" secondAttribute="trailing" constant="8" id="yDF-A9-CG8"/>
+                                                <constraint firstItem="ede-WE-6hW" firstAttribute="top" secondItem="kmB-JJ-4sk" secondAttribute="topMargin" constant="8" id="yse-qq-PIB"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="fJG-mo-AbV" secondAttribute="trailing" constant="8" id="zix-hc-JQp"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="heartRateLabel" destination="fJG-mo-AbV" id="Fdc-f1-KpD"/>
-                                            <outlet property="tableViewDate" destination="MhN-EI-aVc" id="Ajn-5C-tj2"/>
+                                            <outlet property="tableViewDate" destination="ede-WE-6hW" id="16e-0W-nLz"/>
+                                            <outlet property="tableViewTime" destination="VEI-MG-Kwi" id="FcT-Bt-g29"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -11,6 +11,7 @@ import UIKit
 class HeartRateTableViewCell: UITableViewCell {
     @IBOutlet weak var tableViewDate: UILabel!
     @IBOutlet weak var heartRateLabel: UILabel!
+    @IBOutlet weak var tableViewTime: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

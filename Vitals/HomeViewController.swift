@@ -25,7 +25,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidAppear(animated)
         let query = PFQuery(className: "HeartRate")
         query.includeKey("user")
-        query.limit = 2
+        query.limit = 5
         query.findObjectsInBackground{(hrs, error) in if hrs != nil {
             self.hrs = hrs!
             self.tableView.reloadData()
@@ -59,6 +59,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 //        print("MS", myString)
         let myStringDBDateTime = formatter.string(from:creAt!)
         print("MS:",myStringDBDateTime)
+        cell.tableViewTime.text = String(myStringDBDateTime)
+
         // convert your string to date
         let yourDate = formatter.date(from: myString)
         //then again set the date format whhich type of output you need
@@ -71,9 +73,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         print(myStringDBDate)
         cell.tableViewDate.text = String(myStringDBDate)
 
-        
-//        super.viewDidLoad()
-        
         
         
         return cell
