@@ -13,6 +13,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
    
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var homeDateLabel: UILabel!
+    @IBOutlet weak var usernameLabel: UILabel!
     
     var hrs = [PFObject]()
     
@@ -24,7 +26,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let query = PFQuery(className: "HeartRate")
-        query.includeKey("user")
+        query.includeKey("User")
         query.limit = 7
         query.findObjectsInBackground{(hrs, error) in if hrs != nil {
             self.hrs = hrs!
@@ -42,27 +44,28 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier:"HeartRateTableViewCell") as! HeartRateTableViewCell
         
         let hr  = hrs[indexPath.row]
-//        let user  = hr["User"] as! PFUser
-//        let DateCreated = hr["Time"] as? Int
+        let user  = hr["User"] as! PFUser
+        usernameLabel.text = user.username
+        
+        
         let HRdata = hr["HeartRateReading"] as? Int
         cell.heartRateLabel.text = String(HRdata!)
-//        cell.tableViewDate.text = String (hr.createdAt!)
         let creAt = hr.createdAt
-        let formatter = DateFormatter()
-        // initially set the format based on your datepicker date / server String
-        formatter.dateFormat = "HH:mm:ss"
         
-        let myString = formatter.string(from: Date()) // string purpose I add here
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm:ss"
+        var myString = formatter.string(from: Date())
+        
         let myStringDBDateTime = formatter.string(from:creAt!)
         cell.tableViewTime.text = String(myStringDBDateTime)
 
-        // convert your string to date
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        myString = formatter.string(from: Date()) // string
         let yourDate = formatter.date(from: myString)
-        //then again set the date format whhich type of output you need
         formatter.dateFormat = "MMM dd, yyyy"
-        // again convert your date to string
         let myStringafd = formatter.string(from: yourDate!)
-        print(myStringafd)
+        print("today:",myStringafd)
+        homeDateLabel.text = myStringafd
         
         let myStringDBDate = formatter.string(from:creAt!)
         cell.tableViewDate.text = String(myStringDBDate)
@@ -108,3 +111,4 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 //dateField.text = myStringafd
 //print(myStringafd)
 //super.viewDidLoad()
+
