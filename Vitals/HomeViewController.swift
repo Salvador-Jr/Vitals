@@ -25,9 +25,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
            }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        let currentUser = PFQuery(className:"Session")
+        currentUser.includeKey("user")
+        currentUser.findObjectsInBackground()
+        print("CU:", currentUser)
+        
         let query = PFQuery(className: "HeartRate")
         query.includeKey("User")
-        query.limit = 7
+        query.limit = 9
         query.findObjectsInBackground{(hrs, error) in if hrs != nil {
             self.hrs = hrs!
             self.tableView.reloadData()
@@ -42,6 +47,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"HeartRateTableViewCell") as! HeartRateTableViewCell
+        
         
         let hr  = hrs[indexPath.row]
         let user  = hr["User"] as! PFUser
@@ -64,7 +70,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let yourDate = formatter.date(from: myString)
         formatter.dateFormat = "MMM dd, yyyy"
         let myStringafd = formatter.string(from: yourDate!)
-        print("today:",myStringafd)
+//        print("today:",myStringafd)
         homeDateLabel.text = myStringafd
         
         let myStringDBDate = formatter.string(from:creAt!)
@@ -84,31 +90,28 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         delagate.window?.rootViewController = loginViewController
     }
     
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        print("loading new details")
+        //find selected data
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPath(for: cell)!
+        let hrData = hrs[indexPath.row]
+        let nav = segue.destination as! UINavigationController
+        var svc = nav.topViewController as! SettingsViewController
+        svc.hr = [hrData]
+        
+        //pass the data to the new controller
     }
-    */
+
 
 }
 
 
-//let formatter = DateFormatter()
-//// initially set the format based on your datepicker date / server String
-//formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-//
-//let myString = formatter.string(from: Date()) // string purpose I add here
-//// convert your string to date
-//let yourDate = formatter.date(from: myString)
-////then again set the date format whhich type of output you need
-//formatter.dateFormat = "MMM dd, yyyy"
-//// again convert your date to string
-//let myStringafd = formatter.string(from: yourDate!)
-//dateField.text = myStringafd
-//print(myStringafd)
-//super.viewDidLoad()
+
 
