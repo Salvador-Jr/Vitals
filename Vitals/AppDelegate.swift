@@ -23,12 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 configuration.server = "https://floating-lowlands-43052.herokuapp.com/parse"
             })
         )
-//        if PFUser.current() != nil
-//        {
-//            let main = UIStoryboard(name: "Main", bundle: nil)
-//            let homeNavigationController = main.instantiateViewController(withIdentifier: "HomeNavigationController")
-//            window?.rootViewController = homeNavigationController
-//        }
+        if PFUser.current() != nil
+        {
+            let main = UIStoryboard(name: "Main", bundle: nil)
+            let homeNavigationController = main.instantiateViewController(withIdentifier: "HomeNavigationController")
+            window?.rootViewController = homeNavigationController
+        }
         
         return true
     }
