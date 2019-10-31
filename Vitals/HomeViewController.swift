@@ -17,9 +17,35 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var usernameLabel: UILabel!
     
     var hrs = [PFObject]()
-    var cus = [PFObject]()
+    var HRarray = [NSDictionary]()
+    var numberOfHRS = 8
 
-    
+    func loadData()
+    {
+        let query = PFQuery(className: "HeartRate")
+        let CurrentUser = PFUser.current()
+        let cuObjectId = CurrentUser?.objectId
+        print(cuObjectId!)
+        query.includeKey("User")
+//        query.whereKey("User", equalTo: cuObjectId!)
+        
+        query.limit = numberOfHRS
+        query.findObjectsInBackground{(hrst, error) in if hrst != nil {
+            self.hrs = hrst!
+            self.tableView.reloadData()
+            }
+        }
+    }
+//    func loadMoreData(){
+//    numberOfHRS = numberOfHRS + 1
+//        query.includeKey("User")
+//        query.limit = numberOfHRS
+//        query.findObjectsInBackground{(hrst, error) in if hrst != nil {
+//            self.hrs = hrst!
+//            self.tableView.reloadData()
+//            }
+//        }
+//    }
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -27,16 +53,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
            }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let query = PFQuery(className: "HeartRate")
-        query.includeKey("User")
-        query.limit = 5
-        query.findObjectsInBackground{(hrst, error) in if hrst != nil {
-            self.hrs = hrst!
-//            print("AQUI", hrst!)
-            self.tableView.reloadData()
-            }
-            
-        }
+        loadData()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,11 +66,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cuObjectId = CurrentUser?.objectId
         let hr  = hrs[indexPath.row]
         let user  = hr["User"] as! PFUser
-        print ("CU:", cuObjectId!)
-        print ("POI:",user.objectId!)
-        if cuObjectId == user.objectId //compares current user object id with the user post object id
+        usernameLabel.text = CurrentUser?.username
+//        print ("CU:", cuObjectId!)
+//        print ("POI:",user.objectId!)
+        if cuObjectId == user.objectId //compares current user object id with the user post object id. this needs to be done in the query or changed.
         {
-            usernameLabel.text = user.username
             print("THEY MATCH")
             let HRdata = hr["HeartRateReading"] as? Int
             cell.heartRateLabel.text = String(HRdata!)
@@ -80,9 +97,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
         else{
             print("DO NOT MATCH")
+
         }
         
-        
+//        override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//            if indexPath.row + 1 == hrs.count{
+//                loadMoreData()
+//                print("HERE")
+//            }
+//        }
         return cell
     }
     
