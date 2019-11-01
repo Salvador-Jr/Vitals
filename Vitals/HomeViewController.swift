@@ -29,7 +29,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidAppear(animated)
         let query = PFQuery(className: "HeartRate")
         query.includeKey("User")
-        query.limit = 5
+        query.whereKey("User", equalTo: PFUser.current()!)
+        query.limit = 7
         query.findObjectsInBackground{(hrst, error) in if hrst != nil {
             self.hrs = hrst!
 //            print("AQUI", hrst!)
@@ -78,11 +79,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             cell.tableViewDate.text = String(myStringDBDate)
 
         }
-        else{
-            print("DO NOT MATCH")
-        }
-        
-        
         return cell
     }
     
