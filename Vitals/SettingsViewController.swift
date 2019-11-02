@@ -8,10 +8,28 @@
 
 import UIKit
 import Parse
+import MessageUI
 
 class SettingsViewController: UIViewController {
     @IBOutlet weak var sendDateLabel: UILabel!
     @IBOutlet weak var sendHeartRateLabel: UILabel!
+    @IBAction func sendButton(_ sender: Any) {
+        showMailComposer()
+    }
+    func showMailComposer(){
+        print("mail composer")
+        guard MFMailComposeViewController.canSendMail()else{
+            print("can not send mail")
+            return
+        }
+        let composer  = MFMailComposeViewController()
+        composer.mailComposeDelegate = self as? MFMailComposeViewControllerDelegate
+        composer.setToRecipients(["salvador.rodriguez01@sjsu.edu"])//will want to replace with whatever is in the text field
+        composer.setSubject("HEALTH DATA")
+        composer.setMessageBody("BODY info", isHTML: false)
+        present(composer, animated: true)
+        
+    }
     var hr = [PFObject]()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,4 +64,25 @@ class SettingsViewController: UIViewController {
     }
     */
 
+}
+
+
+extension MailComposerViewController: MFMailComposeViewControllerDelegate{
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        if let _ = error{
+            controller.dismiss(animated: true)
+            return
+        }
+        switch result{
+        case .cancelled:
+            print("can")
+        case .failed:
+            print("fail")
+        case.saved:
+            print("save")
+        case.sent:
+            print("sent")
+        }
+        controller.dismiss(animated: true)
+    }
 }

@@ -20,6 +20,7 @@
 		9290113B2328C329007DD4C1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9290113A2328C329007DD4C1 /* HomeViewController.swift */; };
 		9290113D2328D024007DD4C1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9290113C2328D024007DD4C1 /* SettingsViewController.swift */; };
 		92AC0766235AB1490062C50D /* HeartRateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AC0765235AB1490062C50D /* HeartRateTableViewCell.swift */; };
+		92BC6AE8236D03CA00F454D7 /* MailComposerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BC6AE7236D03CA00F454D7 /* MailComposerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		9290113A2328C329007DD4C1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		9290113C2328D024007DD4C1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		92AC0765235AB1490062C50D /* HeartRateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateTableViewCell.swift; sourceTree = "<group>"; };
+		92BC6AE7236D03CA00F454D7 /* MailComposerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailComposerViewController.swift; sourceTree = "<group>"; };
 		B05B0A62568A996B5BB5C325 /* Pods-VitalsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VitalsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VitalsTests/Pods-VitalsTests.release.xcconfig"; sourceTree = "<group>"; };
 		D74A13431FCDA47A18A088DC /* Pods-VitalsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VitalsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VitalsUITests/Pods-VitalsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E1F87EBDCE60EF7AC59B0771 /* Pods-VitalsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VitalsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VitalsUITests/Pods-VitalsUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				929011382328BD0D007DD4C1 /* LoginViewController.swift */,
 				9290113A2328C329007DD4C1 /* HomeViewController.swift */,
 				92AC0765235AB1490062C50D /* HeartRateTableViewCell.swift */,
+				92BC6AE7236D03CA00F454D7 /* MailComposerViewController.swift */,
 			);
 			path = Vitals;
 			sourceTree = "<group>";
@@ -408,6 +411,7 @@
 			files = (
 				929011392328BD0D007DD4C1 /* LoginViewController.swift in Sources */,
 				92AC0766235AB1490062C50D /* HeartRateTableViewCell.swift in Sources */,
+				92BC6AE8236D03CA00F454D7 /* MailComposerViewController.swift in Sources */,
 				929011012328AAB3007DD4C1 /* AppDelegate.swift in Sources */,
 				9290113B2328C329007DD4C1 /* HomeViewController.swift in Sources */,
 				9290113D2328D024007DD4C1 /* SettingsViewController.swift in Sources */,
