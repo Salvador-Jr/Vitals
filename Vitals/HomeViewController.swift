@@ -17,6 +17,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var usernameLabel: UILabel!
     
     var hrs = [PFObject]()
+    var cus = [PFObject]()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,16 +27,13 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
            }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let currentUser = PFQuery(className:"Session")
-        currentUser.includeKey("user")
-        currentUser.findObjectsInBackground()
-        print("CU:", currentUser)
-        
         let query = PFQuery(className: "HeartRate")
         query.includeKey("User")
-        query.limit = 9
-        query.findObjectsInBackground{(hrs, error) in if hrs != nil {
-            self.hrs = hrs!
+        query.whereKey("User", equalTo: PFUser.current()!)
+        query.limit = 7
+        query.findObjectsInBackground{(hrst, error) in if hrst != nil {
+            self.hrs = hrst!
+//            print("AQUI", hrst!)
             self.tableView.reloadData()
             }
             
@@ -47,37 +46,39 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier:"HeartRateTableViewCell") as! HeartRateTableViewCell
-        
-        
+        let CurrentUser = PFUser.current()
+        let cuObjectId = CurrentUser?.objectId
         let hr  = hrs[indexPath.row]
         let user  = hr["User"] as! PFUser
-        usernameLabel.text = user.username
-        
-        
-        let HRdata = hr["HeartRateReading"] as? Int
-        cell.heartRateLabel.text = String(HRdata!)
-        let creAt = hr.createdAt
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm:ss"
-        var myString = formatter.string(from: Date())
-        
-        let myStringDBDateTime = formatter.string(from:creAt!)
-        cell.tableViewTime.text = String(myStringDBDateTime)
+        print ("CU:", cuObjectId!)
+        print ("POI:",user.objectId!)
+        if cuObjectId == user.objectId //compares current user object id with the user post object id
+        {
+            usernameLabel.text = user.username
+            print("THEY MATCH")
+            let HRdata = hr["HeartRateReading"] as? Int
+            cell.heartRateLabel.text = String(HRdata!)
+            let creAt = hr.createdAt
+            
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH:mm:ss"
+            var myString = formatter.string(from: Date())
+            
+            let myStringDBDateTime = formatter.string(from:creAt!)
+            cell.tableViewTime.text = String(myStringDBDateTime)
+            
+            formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            myString = formatter.string(from: Date()) // string
+            let yourDate = formatter.date(from: myString)
+            formatter.dateFormat = "MMM dd, yyyy"
+            let myStringafd = formatter.string(from: yourDate!)
+            //        print("today:",myStringafd)
+            homeDateLabel.text = myStringafd
+            
+            let myStringDBDate = formatter.string(from:creAt!)
+            cell.tableViewDate.text = String(myStringDBDate)
 
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        myString = formatter.string(from: Date()) // string
-        let yourDate = formatter.date(from: myString)
-        formatter.dateFormat = "MMM dd, yyyy"
-        let myStringafd = formatter.string(from: yourDate!)
-//        print("today:",myStringafd)
-        homeDateLabel.text = myStringafd
-        
-        let myStringDBDate = formatter.string(from:creAt!)
-        cell.tableViewDate.text = String(myStringDBDate)
-
-        
-        
+        }
         return cell
     }
     
