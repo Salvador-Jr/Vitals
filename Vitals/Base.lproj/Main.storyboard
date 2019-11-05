@@ -322,7 +322,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="include a message..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dfJ-AL-xRl">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dfJ-AL-xRl">
                                 <rect key="frame" x="16" y="301" width="343" height="302"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -377,6 +377,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="bdyLabel" destination="dfJ-AL-xRl" id="O0S-vF-EfL"/>
+                        <outlet property="emalLabel" destination="flh-ce-j71" id="eT3-sv-8Nh"/>
                         <outlet property="sendDateLabel" destination="PWB-EJ-29g" id="NSf-BZ-eOG"/>
                         <outlet property="sendHeartRateLabel" destination="cpB-V6-PL1" id="mgK-7A-oIh"/>
                     </connections>
