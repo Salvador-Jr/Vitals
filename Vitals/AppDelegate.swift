@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if PFUser.current() != nil
         {
             let main = UIStoryboard(name: "Main", bundle: nil)
-            let homeNavigationController = main.instantiateViewController(withIdentifier: "HomeNavigationController")
+            let homeNavigationController = main.instantiateViewController(withIdentifier: "HNC")
             window?.rootViewController = homeNavigationController
         }
         

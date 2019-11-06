@@ -18,7 +18,7 @@ class SettingsViewController: UIViewController, UITextViewDelegate {
     var sendTo = "chillsss@gmail.com"
     let HeartRateIntegerValue = 0
     var sendBody = "Default Body"
-    let placeholderText = "Include a message here. Your data will be included at the end of this message. For example: Dear Dr X, Please see attached heart rate data for examination."
+    let placeholderText = "Include a message here. Your data will be included at the end of this message. For example: \n\nDear Dr X,\nPlease see attached heart rate data for examination.\nThe folllowing is the data recorded by my device on December 30th, 2030 \nHeart Rate: 95 "
     var hr = [PFObject]()
     override func viewDidLoad() {
         super.viewDidLoad()

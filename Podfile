@@ -9,6 +9,8 @@ target 'Vitals' do
 
   pod "Parse"
   pod "AlamofireImage"
+  pod "Charts"
+
 
   target 'VitalsTests' do
     inherit! :search_paths
