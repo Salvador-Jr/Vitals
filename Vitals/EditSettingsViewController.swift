@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class EditSettingsViewController: UIViewController {
+class EditSettingsViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var genderField: UITextField!
     @IBOutlet weak var bloodTypeField: UITextField!
     @IBOutlet weak var emailField: UITextField!
@@ -17,6 +17,12 @@ class EditSettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        genderField.returnKeyType = .done
+        genderField.delegate = self
+        bloodTypeField.returnKeyType = .done
+        bloodTypeField.delegate = self
+        emailField.returnKeyType = .done
+        emailField.delegate = self
 
         // Do any additional setup after loading the view.
     }
@@ -53,6 +59,12 @@ class EditSettingsViewController: UIViewController {
                 print("error")
             }
         }
+    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string == "\n"{
+            textField.resignFirstResponder()
+        }
+        return true
     }
     /*
     // MARK: - Navigation

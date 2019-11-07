@@ -9,12 +9,13 @@
 import UIKit
 import Parse
 
-class ForgotPasswordViewController: UIViewController {
+class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        emailField.delegate = self
+        emailField.returnKeyType = .done
         // Do any additional setup after loading the view.
     }
     @IBAction func submitRequestButton(_ sender: Any) {
@@ -25,6 +26,12 @@ class ForgotPasswordViewController: UIViewController {
     @IBAction func cancelBuuton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
         
+    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string == "\n"{
+            textField.resignFirstResponder()
+        }
+        return true
     }
     
     /*

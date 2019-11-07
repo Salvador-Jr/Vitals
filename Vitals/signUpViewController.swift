@@ -9,11 +9,24 @@
 import UIKit
 import Parse
 
-class signUpViewController: UIViewController {
+class signUpViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        usernameField.delegate = self
+        usernameField.returnKeyType = .done
+        
+        passwordField.delegate = self
+        passwordField.returnKeyType = .done
+        
+        emailField.delegate = self
+        emailField.returnKeyType = .done
+        
+        genderField.delegate = self
+        genderField.returnKeyType = .done
+        
+        bloodTypeField.delegate = self
+        bloodTypeField.returnKeyType = .done
         // Do any additional setup after loading the view.
     }
     @IBOutlet weak var usernameField: UITextField!
@@ -31,6 +44,13 @@ class signUpViewController: UIViewController {
         user.username = usernameField.text!
         user.password = passwordField.text!
         user["Sex"] = genderField.text!
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string == "\n"{
+            textField.resignFirstResponder()
+        }
+        return true
     }
     /*
     // MARK: - Navigation
