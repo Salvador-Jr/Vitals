@@ -10,7 +10,7 @@ import UIKit
 import Charts
 import Parse
 
-class MyVitalsAnalysisViewController: UIViewController {
+class MyVitalsAnalysisViewController: UIViewController, UITextFieldDelegate {
     var heartRateValue : [Double] = []
     var hrs = [PFObject]()
     var oldhrs = [PFObject]()
@@ -25,6 +25,8 @@ class MyVitalsAnalysisViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         startDateQuery = "0"
+        startDateLabel.returnKeyType = .done
+        startDateLabel.delegate = self
 //        number.append(10)
 //        number.append(2)
 //        number.append(15)
@@ -32,7 +34,12 @@ class MyVitalsAnalysisViewController: UIViewController {
 //        updateChartData()
         // Do any additional setup after loading the view.
     }
-    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string == "\n"{
+            textField.resignFirstResponder()
+        }
+        return true
+    }
     @IBAction func goButton(_ sender: Any) {
         clickCount = clickCount + 1
         print ("CC:", clickCount)

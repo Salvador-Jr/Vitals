@@ -10,12 +10,12 @@ import UIKit
 import Parse
 import MessageUI
 
-class SettingsViewController: UIViewController, UITextViewDelegate {
+class SettingsViewController: UIViewController, UITextViewDelegate, MFMailComposeViewControllerDelegate, UITextFieldDelegate{
     @IBOutlet weak var sendDateLabel: UILabel!
     @IBOutlet weak var sendHeartRateLabel: UILabel!
-    @IBOutlet weak var emalLabel: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var bdyLabel: UITextView!
-    var sendTo = "chillsss@gmail.com"
+    var sendTo = "NeeedToReplace@gmail.com"
     let HeartRateIntegerValue = 0
     var sendBody = "Default Body"
     let placeholderText = "Include a message here. Your data will be included at the end of this message. For example: \n\nDear Dr X,\nPlease see attached heart rate data for examination.\nThe folllowing is the data recorded by my device on December 30th, 2030 \nHeart Rate: 95 "
@@ -24,6 +24,8 @@ class SettingsViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         bdyLabel.delegate = self
         bdyLabel.returnKeyType = .done
+        emailTextField.delegate = self
+        emailTextField.returnKeyType = .done
         bdyLabel.text = placeholderText
         bdyLabel.textColor = UIColor.lightGray
         if (bdyLabel.isFirstResponder)
@@ -32,7 +34,6 @@ class SettingsViewController: UIViewController, UITextViewDelegate {
         }
         else{
             bdyLabel.text = placeholderText
-
         }
 //        print ("NEW screen", hr) //debug statement
         let HRdata = hr[0]
@@ -51,26 +52,17 @@ class SettingsViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func sendButton(_ sender: Any) {
-        sendTo = emalLabel.text!
+        sendTo = emailTextField.text!
         sendBody = bdyLabel.text!
         sendBody = bdyLabel.text! + " \nThe folllowing is the data recorded by my device on " + sendDateLabel.text! + " \n Heart rate: " + sendHeartRateLabel.text!
-        showMailComposer()
-    }
-    func showMailComposer(){
-        print("mail composer")
-        guard MFMailComposeViewController.canSendMail()else{
-            print("can not send mail")
-            return
+        let mailComposeViewC = configureMailController()
+        if MFMailComposeViewController.canSendMail(){
+            present(mailComposeViewC, animated: true, completion: nil)
         }
-//        sendTo = "chill@gmail.com"
-        let composer  = MFMailComposeViewController()
-        composer.mailComposeDelegate = self as? MFMailComposeViewControllerDelegate
-        composer.setToRecipients([sendTo])//will want to replace with whatever is in the text field
-//        composer.setToRecipients([sendTo])
-        composer.setSubject("HEALTH DATA")
-//        composer.setMessageBody("BODY info", isHTML: false)
-        composer.setMessageBody(sendBody , isHTML: false)
-        present(composer, animated: true)
+        else{
+            print("canNotSend MAIL")
+            showMailError()
+        }
         
     }
     @IBAction func onBackButton(_ sender: Any) {
@@ -88,6 +80,12 @@ class SettingsViewController: UIViewController, UITextViewDelegate {
         }
         return true
     }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string == "\n"{
+            textField.resignFirstResponder()
+        }
+        return true
+    }
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text == ""
         {
@@ -95,7 +93,33 @@ class SettingsViewController: UIViewController, UITextViewDelegate {
             textView.textColor = UIColor.lightGray
         }
     }
-
+    func configureMailController()->MFMailComposeViewController{
+        let viewControllerComposeMail = MFMailComposeViewController()
+        viewControllerComposeMail.mailComposeDelegate = self
+        viewControllerComposeMail.setSubject("HealthData")
+        viewControllerComposeMail.setToRecipients([sendTo])
+        viewControllerComposeMail.setMessageBody(sendBody, isHTML: false)
+        return viewControllerComposeMail
+    }
+    func showMailError(){
+        let mailErrorAlert = UIAlertController(title: "could not send email", message: "your device could not send email", preferredStyle: .alert)
+        let dismiss = UIAlertAction(title: "Success", style: .default, handler: nil)
+        mailErrorAlert.addAction(dismiss)
+        self.present(mailErrorAlert, animated: true, completion: nil)
+    }
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+        switch result{
+        case .cancelled:
+            print("Message Cancelled")
+        case .failed:
+            print("Message Failed to send")
+        case.saved:
+            print("Message Saved")
+        case.sent:
+            print("Message Sent Successfully")
+        }
+    }
     /*
     // MARK: - Navigation
 
@@ -107,25 +131,3 @@ class SettingsViewController: UIViewController, UITextViewDelegate {
     */
 
 }
-
-
-extension MailComposerViewController: MFMailComposeViewControllerDelegate{
-    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
-        if let _ = error{
-            controller.dismiss(animated: true)
-            return
-        }
-        switch result{
-        case .cancelled:
-            print("can")
-        case .failed:
-            print("fail")
-        case.saved:
-            print("save")
-        case.sent:
-            print("sent")
-        }
-        controller.dismiss(animated: true)
-    }
-}
-

@@ -9,13 +9,16 @@
 import UIKit
 import Parse
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var usernameField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        passwordField.delegate = self
+        usernameField.delegate = self
+        usernameField.returnKeyType = .done
+        passwordField.returnKeyType = .done
         // Do any additional setup after loading the view.
     }
     @IBAction func onSignIn(_ sender: Any) {
@@ -47,6 +50,13 @@ class LoginViewController: UIViewController {
             }
         }
 
+    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        print("in HEREEEEE!!")
+        if string == "\n"{
+            textField.resignFirstResponder()
+        }
+        return true
     }
     
     /*
