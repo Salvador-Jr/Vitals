@@ -77,7 +77,7 @@ class MyVitalsAnalysisViewController: UIViewController, UITextFieldDelegate {
 //        print ("CC in UPDATE:", clickCount)
 
         var lineChartEntry = [ChartDataEntry]()
-        
+        lineChartEntry.removeAll()
         for i in 0..<heartRateValue.count{
             let value = ChartDataEntry(x: Double(i), y: heartRateValue[i])
             lineChartEntry.append(value)
@@ -86,67 +86,12 @@ class MyVitalsAnalysisViewController: UIViewController, UITextFieldDelegate {
         heartRateDataLine.colors = [NSUIColor.orange]
         
         let data = LineChartData()
-
-        /*
-         if data.dataSetCount == 1{
-         data.removeDataSet(heartRateDataLine)
-         print("remove", data.dataSetCount)
-         }
-         else{
-         data.addDataSet(heartRateDataLine)
-         print("add", data.dataSetCount)
-         
-         }
- */
-        
-//        if clickCount > 2
-//        {
-//            print("remove then add")
-//            data.removeDataSet(heartRateDataLine)
-//            print("remove", data.dataSetCount)
-//            chartLine.data = data
-//        }
-//        else{
-//            data.addDataSet(heartRateDataLine)
-//            print("add", data.dataSetCount)
-//            chartLine.data = data
-//        }
-        
-//        if data.dataSetCount == 1
-//        {
-//            print("TREUdd= ", data.dataSetCount)
-//            data.removeDataSet(heartRateDataLine)
-//            print("new = ", data.dataSetCount)
-//
-//        }
-//        else{
-//            print("FALSEdd= ", data.dataSetCount)
-//            data.addDataSet(heartRateDataLine)
-//            print("new = ", data.dataSetCount)
-//        }
-//        chartLine.data = data
-//        chartLine.chartDescription?.text = "chart"
-        
-        
-        print("START = ", data.dataSetCount)
-        if clickCount == 1{
-            print("first time being clicked on")
-            data.addDataSet(heartRateDataLine)
-            chartLine.data = data
-        }
-        else{
-            print("all the other times")
-            data.removeDataSet(heartRateDataLine)
-            chartLine.data = data
-
-            DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-                data.addDataSet(heartRateDataLine)
-                self.chartLine.data = data
-
-
-            }
-        }
+        data.addDataSet(heartRateDataLine)
+        chartLine.notifyDataSetChanged()
+        chartLine.data = data
+        print ("Total pts:", lineChartEntry.count,"\n_______\n")
         chartLine.chartDescription?.text = "chart"
+        heartRateValue.removeAll()
     }
     
     
