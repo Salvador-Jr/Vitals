@@ -40,10 +40,32 @@ class signUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func continueButton(_ sender: Any) {
-        let user = PFUser()
-        user.username = usernameField.text!
-        user.password = passwordField.text!
-        user["Sex"] = genderField.text!
+//        let user = PFUser()
+
+        if (((usernameField!.text) == "") || (passwordField!.text == "") || (emailField!.text == "") || (genderField!.text == "") || (bloodTypeField!.text) == "")
+        {
+            print("cant leave any blank")
+        }
+        else{
+            let user = PFUser()
+            user.username = usernameField.text!
+            user.password = passwordField.text!
+            user["Sex"] = genderField.text!
+            user["bloodType"] = bloodTypeField.text!
+            user["email"] = emailField.text!
+
+            user.signUpInBackground { (success, error) in
+                if success{
+                    print("Created. Log in")
+                }
+                else{
+                    print("error\(String(describing: error?.localizedDescription))")
+                }
+            }
+        }
+//        user.username = usernameField.text!
+//        user.password = passwordField.text!
+//        user["Sex"] = genderField.text!
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

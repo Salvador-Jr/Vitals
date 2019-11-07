@@ -53,7 +53,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        print("in HEREEEEE!!")
         if string == "\n"{
             textField.resignFirstResponder()
         }

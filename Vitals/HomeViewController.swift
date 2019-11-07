@@ -27,6 +27,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
            }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        usernameLabel.text = PFUser.current()?.username
         let query = PFQuery(className: "HeartRate")
         query.includeKey("User")
         query.whereKey("User", equalTo: PFUser.current()!)
@@ -52,9 +53,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let user  = hr["User"] as! PFUser
         print ("CU:", cuObjectId!)
         print ("POI:",user.objectId!)
+//        usernameLabel.text = user.username
+        print("US:",user.username!)
         if cuObjectId == user.objectId //compares current user object id with the user post object id
         {
-            usernameLabel.text = user.username
             print("THEY MATCH")
             let HRdata = hr["HeartRateReading"] as? Int
             cell.heartRateLabel.text = String(HRdata!)
@@ -100,12 +102,20 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Pass the selected object to the new view controller.
         print("loading new details")
         //find selected data
-        let cell = sender as! UITableViewCell
-        let indexPath = tableView.indexPath(for: cell)!
-        let hrData = hrs[indexPath.row]
-        let nav = segue.destination as! UINavigationController
-        var svc = nav.topViewController as! SettingsViewController
-        svc.hr = [hrData]
+        let identifier = segue.identifier
+        if identifier == "emailData"
+        {
+            let cell = sender as! UITableViewCell
+            let indexPath = tableView.indexPath(for: cell)!
+            let hrData = hrs[indexPath.row]
+            let nav = segue.destination as! UINavigationController
+            var svc = nav.topViewController as! SettingsViewController
+            svc.hr = [hrData]
+        }
+        else{
+            print("Add new")
+        }
+
         
         //pass the data to the new controller
     }

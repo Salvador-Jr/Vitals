@@ -25,6 +25,7 @@
 		92E024B12373FBDF000D4B3D /* EditSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E024B02373FBDF000D4B3D /* EditSettingsViewController.swift */; };
 		92E024B323740228000D4B3D /* signUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E024B223740228000D4B3D /* signUpViewController.swift */; };
 		92E024B523740A35000D4B3D /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E024B423740A35000D4B3D /* ForgotPasswordViewController.swift */; };
+		92E024B72374A3E7000D4B3D /* AddNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E024B62374A3E7000D4B3D /* AddNewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		92E024B02373FBDF000D4B3D /* EditSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSettingsViewController.swift; sourceTree = "<group>"; };
 		92E024B223740228000D4B3D /* signUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signUpViewController.swift; sourceTree = "<group>"; };
 		92E024B423740A35000D4B3D /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		92E024B62374A3E7000D4B3D /* AddNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewViewController.swift; sourceTree = "<group>"; };
 		B05B0A62568A996B5BB5C325 /* Pods-VitalsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VitalsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VitalsTests/Pods-VitalsTests.release.xcconfig"; sourceTree = "<group>"; };
 		D74A13431FCDA47A18A088DC /* Pods-VitalsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VitalsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VitalsUITests/Pods-VitalsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E1F87EBDCE60EF7AC59B0771 /* Pods-VitalsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VitalsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VitalsUITests/Pods-VitalsUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				92E024B02373FBDF000D4B3D /* EditSettingsViewController.swift */,
 				92E024B223740228000D4B3D /* signUpViewController.swift */,
 				92E024B423740A35000D4B3D /* ForgotPasswordViewController.swift */,
+				92E024B62374A3E7000D4B3D /* AddNewViewController.swift */,
 			);
 			path = Vitals;
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92E024B72374A3E7000D4B3D /* AddNewViewController.swift in Sources */,
 				929011392328BD0D007DD4C1 /* LoginViewController.swift in Sources */,
 				92AC0766235AB1490062C50D /* HeartRateTableViewCell.swift in Sources */,
 				92E024B12373FBDF000D4B3D /* EditSettingsViewController.swift in Sources */,
