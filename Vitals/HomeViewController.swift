@@ -31,7 +31,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let query = PFQuery(className: "HeartRate")
         query.includeKey("User")
         query.whereKey("User", equalTo: PFUser.current()!)
-        query.limit = 7
+        query.limit = 20
+        query.order(byDescending: "createdAt")
         query.findObjectsInBackground{(hrst, error) in if hrst != nil {
             self.hrs = hrst!
 //            print("AQUI", hrst!)

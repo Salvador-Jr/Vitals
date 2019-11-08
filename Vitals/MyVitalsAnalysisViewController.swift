@@ -82,7 +82,7 @@ class MyVitalsAnalysisViewController: UIViewController, UITextFieldDelegate {
             let value = ChartDataEntry(x: Double(i), y: heartRateValue[i])
             lineChartEntry.append(value)
         }
-        let heartRateDataLine = LineChartDataSet(values: lineChartEntry, label: "HeartRate")
+        let heartRateDataLine = LineChartDataSet(values: lineChartEntry, label: "Heart Rate Trend")
         heartRateDataLine.colors = [NSUIColor.orange]
         
         let data = LineChartData()
@@ -90,7 +90,7 @@ class MyVitalsAnalysisViewController: UIViewController, UITextFieldDelegate {
         chartLine.notifyDataSetChanged()
         chartLine.data = data
         print ("Total pts:", lineChartEntry.count,"\n_______\n")
-        chartLine.chartDescription?.text = "chart"
+        chartLine.chartDescription?.text = "Heart Rate Chart"
         heartRateValue.removeAll()
     }
     
