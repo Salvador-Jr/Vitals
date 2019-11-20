@@ -9,13 +9,16 @@
 import UIKit
 import Parse
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var usernameField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        passwordField.delegate = self
+        usernameField.delegate = self
+        usernameField.returnKeyType = .done
+        passwordField.returnKeyType = .done
         // Do any additional setup after loading the view.
     }
     @IBAction func onSignIn(_ sender: Any) {
@@ -35,18 +38,25 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func onSignUp(_ sender: Any) {
-        let user = PFUser()
-        user.username = usernameField.text!
-        user.password = passwordField.text!
-        user.signUpInBackground { (success, error) in
-            if success{
-                self.performSegue(withIdentifier: "loginSegue", sender: nil)
-            }
-            else{
-                print("error\(String(describing: error?.localizedDescription))")
-            }
-        }
+        print("sign up selected")
+//        let user = PFUser()
+//        user.username = usernameField.text!
+//        user.password = passwordField.text!
+//        user.signUpInBackground { (success, error) in
+//            if success{
+//                self.performSegue(withIdentifier: "loginSegue", sender: nil)
+//            }
+//            else{
+//                print("error\(String(describing: error?.localizedDescription))")
+//            }
+//        }
 
+    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string == "\n"{
+            textField.resignFirstResponder()
+        }
+        return true
     }
     
     /*

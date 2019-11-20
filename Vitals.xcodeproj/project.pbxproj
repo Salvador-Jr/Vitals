@@ -21,6 +21,11 @@
 		9290113D2328D024007DD4C1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9290113C2328D024007DD4C1 /* SettingsViewController.swift */; };
 		92AC0766235AB1490062C50D /* HeartRateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92AC0765235AB1490062C50D /* HeartRateTableViewCell.swift */; };
 		92BC6AE8236D03CA00F454D7 /* MailComposerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BC6AE7236D03CA00F454D7 /* MailComposerViewController.swift */; };
+		92BC6AEA2371642900F454D7 /* MyVitalsAnalysisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92BC6AE92371642900F454D7 /* MyVitalsAnalysisViewController.swift */; };
+		92E024B12373FBDF000D4B3D /* EditSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E024B02373FBDF000D4B3D /* EditSettingsViewController.swift */; };
+		92E024B323740228000D4B3D /* signUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E024B223740228000D4B3D /* signUpViewController.swift */; };
+		92E024B523740A35000D4B3D /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E024B423740A35000D4B3D /* ForgotPasswordViewController.swift */; };
+		92E024B72374A3E7000D4B3D /* AddNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E024B62374A3E7000D4B3D /* AddNewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +69,11 @@
 		9290113C2328D024007DD4C1 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		92AC0765235AB1490062C50D /* HeartRateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateTableViewCell.swift; sourceTree = "<group>"; };
 		92BC6AE7236D03CA00F454D7 /* MailComposerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailComposerViewController.swift; sourceTree = "<group>"; };
+		92BC6AE92371642900F454D7 /* MyVitalsAnalysisViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVitalsAnalysisViewController.swift; sourceTree = "<group>"; };
+		92E024B02373FBDF000D4B3D /* EditSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSettingsViewController.swift; sourceTree = "<group>"; };
+		92E024B223740228000D4B3D /* signUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signUpViewController.swift; sourceTree = "<group>"; };
+		92E024B423740A35000D4B3D /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		92E024B62374A3E7000D4B3D /* AddNewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewViewController.swift; sourceTree = "<group>"; };
 		B05B0A62568A996B5BB5C325 /* Pods-VitalsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VitalsTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VitalsTests/Pods-VitalsTests.release.xcconfig"; sourceTree = "<group>"; };
 		D74A13431FCDA47A18A088DC /* Pods-VitalsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VitalsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VitalsUITests/Pods-VitalsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		E1F87EBDCE60EF7AC59B0771 /* Pods-VitalsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VitalsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-VitalsUITests/Pods-VitalsUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -155,6 +165,11 @@
 				9290113A2328C329007DD4C1 /* HomeViewController.swift */,
 				92AC0765235AB1490062C50D /* HeartRateTableViewCell.swift */,
 				92BC6AE7236D03CA00F454D7 /* MailComposerViewController.swift */,
+				92BC6AE92371642900F454D7 /* MyVitalsAnalysisViewController.swift */,
+				92E024B02373FBDF000D4B3D /* EditSettingsViewController.swift */,
+				92E024B223740228000D4B3D /* signUpViewController.swift */,
+				92E024B423740A35000D4B3D /* ForgotPasswordViewController.swift */,
+				92E024B62374A3E7000D4B3D /* AddNewViewController.swift */,
 			);
 			path = Vitals;
 			sourceTree = "<group>";
@@ -386,6 +401,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/Parse/Parse.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -395,6 +411,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Parse.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,12 +426,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92E024B72374A3E7000D4B3D /* AddNewViewController.swift in Sources */,
 				929011392328BD0D007DD4C1 /* LoginViewController.swift in Sources */,
 				92AC0766235AB1490062C50D /* HeartRateTableViewCell.swift in Sources */,
+				92E024B12373FBDF000D4B3D /* EditSettingsViewController.swift in Sources */,
+				92BC6AEA2371642900F454D7 /* MyVitalsAnalysisViewController.swift in Sources */,
 				92BC6AE8236D03CA00F454D7 /* MailComposerViewController.swift in Sources */,
 				929011012328AAB3007DD4C1 /* AppDelegate.swift in Sources */,
+				92E024B523740A35000D4B3D /* ForgotPasswordViewController.swift in Sources */,
 				9290113B2328C329007DD4C1 /* HomeViewController.swift in Sources */,
 				9290113D2328D024007DD4C1 /* SettingsViewController.swift in Sources */,
+				92E024B323740228000D4B3D /* signUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -593,6 +615,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T6RX2NT5R3;
 				INFOPLIST_FILE = Vitals/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -612,6 +635,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T6RX2NT5R3;
 				INFOPLIST_FILE = Vitals/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
