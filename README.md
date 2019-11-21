@@ -12,7 +12,7 @@ Vitals is an iOS application developed in swift. The application is used to view
 ## Installation
 1. Register as an [apple developer](https://developer.apple.com/)
 2. Download Xcode version 10.1
-3. Download [Swift version 4.1] (https://swift.org/download/#releases) (you will need to find the corrrect relaease)
+3. Download [Swift version 4.1](https://swift.org/download/#releases) (you will need to find the corrrect relaease)
 4. Install Cocoapods by running the following command in terminal
 ```bash
 $ sudo gem install cocoapods
