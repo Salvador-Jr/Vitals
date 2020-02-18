@@ -2,6 +2,9 @@
 https://github.com/Salvador-Jr/Vitals
 Vitals is an iOS application developed in swift. The application is used to view Heart Rate data saved on a database.
 
+## Demo
+(App demo starts at 27 seconds)
+https://www.youtube.com/watch?v=MROy5d1RGQ8&feature=youtu.be
 
 ## Build requirements
 
